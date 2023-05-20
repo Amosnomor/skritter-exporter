@@ -1,2 +1,2 @@
 # skritter-exporter
-Export skritter studied words via Skritter API
+Export Skritter studied words via Skritter API
