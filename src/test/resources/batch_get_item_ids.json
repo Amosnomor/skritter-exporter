@@ -1,0 +1,24 @@
+{
+  "Batch":{
+    "totalRequests":1,
+    "Requests":[
+      {
+        "created":1682637854,
+        "id":"5078492017721344",
+        "spawnedBy":5210785105444864,
+        "done":false,
+        "params":{
+          "ids_only":"true",
+          "limit":20
+        },
+        "path":"api/v0/items",
+        "method":"GET"
+      }
+    ],
+    "runningRequests":1,
+    "id":"5210785105444864",
+    "created":1682637854
+  },
+  "statusCode":200
+} 
+

@@ -1,0 +1,47 @@
+{
+  "Vocab": {
+    "lang": "zh",
+    "priority": 0,
+    "style": "both",
+    "audio": "http://storage.googleapis.com/skritter_audio/zh/xiao-lu/5604481132265472.mp3",
+    "toughness": 2,
+    "sentenceIds": [],
+    "created": 1290940640,
+    "bannedParts": [],
+    "creator": "CPAPI",
+    "ilk": "word",
+    "writing": "啤酒",
+    "audios": [
+      {
+        "source": "xiao-lu",
+        "reading": "pi2jiu3",
+        "id": "5604481132265472",
+        "writing": "",
+        "mp3": "http://storage.googleapis.com/skritter_audio/zh/xiao-lu/5604481132265472.mp3"
+      }
+    ],
+    "dictionaryLinks": {
+      "you-dao": "http://dict.youdao.com/search?q=%E5%95%A4%E9%85%92&keyfrom=dict.index",
+      "mdbg": "https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=0&wdqb=%E5%95%A4%E9%85%92",
+      "yellow-bridge": "http://www.yellowbridge.com/chinese/dictionary.php?word=%E5%95%A4%E9%85%92",
+      "chinesepod": "https://chinesepod.com/tools/glossary/entry/%E5%95%A4%E9%85%92",
+      "zdic": "",
+      "hanzicraft": "http://www.hanzicraft.com/character/%E5%95%A4%E9%85%92",
+      "tatoeba-zh": "http://tatoeba.org/eng/sentences/search?query=%E5%95%A4%E9%85%92&from=cmn&to=und",
+      "tw-moe": "https://www.moedict.tw/%E5%95%A4%E9%85%92"
+    },
+    "containedVocabIds": [
+      "zh-啤-0",
+      "zh-酒-0"
+    ],
+    "audioURL": "http://storage.googleapis.com/skritter_audio/zh/xiao-lu/5604481132265472.mp3",
+    "toughnessString": "easier",
+    "definitions": {
+      "en": "beer"
+    },
+    "starred": false,
+    "reading": "pi2jiu3",
+    "id": "zh-啤酒-0"
+  },
+  "statusCode": 200
+}

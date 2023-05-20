@@ -1,0 +1,64 @@
+{
+  "Batch":{
+    "totalRequests":2,
+    "Requests":[
+      {
+        "responseStatusCode":200,
+        "created":1682637856,
+        "id":"5077606289768448",
+        "spawnedBy":5883192233295872,
+        "done":1682637856,
+        "params":{
+          "fields":"reading,writing,definitions",
+          "ids":"zh-场-0|zh-艮-0"
+        },
+        "path":"api/v0/vocabs",
+        "response":"",
+        "method":"GET",
+        "responseSize":2
+      },
+      {
+        "responseStatusCode":200,
+        "created":1682637856,
+        "id":"5241609615966208",
+        "spawnedBy":5077606289768448,
+        "done":1682637857,
+        "params":{
+          "cursor":null,
+          "fields":"reading,writing,definitions",
+          "limit":100,
+          "ids":"zh-场-0|zh-艮-0"
+        },
+        "path":"api/v0/vocabs",
+        "response":{
+          "Vocabs":[
+            {
+              "definitions":{
+                "en":"courtyard; place; field; (mw for games, performances, etc.)\nthreshing floor"
+              },
+              "reading":"chang3, chang2",
+              "writing":"场",
+              "style":"simp"
+            },
+            {
+              "definitions":{
+                "en":"blunt; straightforward; tough; chewy\none of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)"
+              },
+              "reading":"gen3, gen4",
+              "writing":"艮",
+              "style":"both"
+            }
+          ],
+          "statusCode":200
+        },
+        "method":"GET",
+        "responseSize":351
+      }
+    ],
+    "runningRequests":0,
+    "id":"5883192233295872",
+    "created":1682637856
+  },
+  "statusCode":200
+} 
+

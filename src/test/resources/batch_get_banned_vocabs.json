@@ -1,0 +1,23 @@
+{
+  "Batch":{
+    "totalRequests":1,
+    "Requests":[
+      {
+        "created":1682964936,
+        "id":"5559000073895936",
+        "spawnedBy":5854829368180736,
+        "done":false,
+        "params":{
+          "sort":"banned"
+        },
+        "path":"api/v0/vocabs",
+        "method":"GET"
+      }
+    ],
+    "runningRequests":1,
+    "id":"5854829368180736",
+    "created":1682964935
+  },
+  "statusCode":200
+} 
+

@@ -1,0 +1,6 @@
+{
+  "message": "User authorization required.",
+  "statusCode": 401,
+  "error": "AuthenticationException"
+}
+

@@ -1,0 +1,24 @@
+{
+  "Batch":{
+    "totalRequests":1,
+    "Requests":[
+      {
+        "created":1682637856,
+        "id":"5077606289768448",
+        "spawnedBy":5883192233295872,
+        "done":false,
+        "params":{
+          "fields":"reading,writing,definitions",
+          "ids":"zh-场-0|zh-艮-0"
+        },
+        "path":"api/v0/vocabs",
+        "method":"GET"
+      }
+    ],
+    "runningRequests":1,
+    "id":"5883192233295872",
+    "created":1682637856
+  },
+  "statusCode":200
+} 
+
