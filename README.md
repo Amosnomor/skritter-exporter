@@ -9,7 +9,7 @@ Pinyin with tone numbers from Skritter is converted to Pinyin with tone marks.
 
 *Simplified-TAB-Traditional-TAB-Pinyin(with tone numbers)-TAB-Definitions*
 
-## Converts them to:
+## Converts to:
 
 *Traditional-TAB-Simplified(empty if same as Traditional)-TAB-Pinyin(with tone marks)-TAB-Definitions*
 
@@ -23,7 +23,7 @@ The unit tests mock all of the Skritter API access.
 In your Skritter account, at https://skritter.com/account/integrations
 create a read-only access token.
 
-Then create a src/main/resources/skritter.properties file containg:
+Then create a src/main/resources/skritter.properties file containing:
 ```
 #
 # Skritter Access token.  Do not commit this. Listed in .gitignore
