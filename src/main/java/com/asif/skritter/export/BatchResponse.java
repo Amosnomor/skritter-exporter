@@ -44,6 +44,7 @@ public class BatchResponse {
                 + ", runningRequests:" + runningRequests;
     }
 
+    // Helper to construct a BatchResponse from a json-io map
     record Builder(Map<String, Object> batchResponseMap) {
 
         BatchResponse build() {

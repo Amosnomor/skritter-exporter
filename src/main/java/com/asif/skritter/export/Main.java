@@ -56,16 +56,24 @@ public class Main {
         ApiClient apiClient = new ApiClient(skritterProperties);
         Items items = new Items(apiClient);
 
+        // Get item ids for all studied words
         Set<String> itemIds = items.getItemIds();
+        // Remove all but the rune versions
         itemIds = items.filterItemIds(itemIds, List.of(Constants.SKRITTER_ITEM_ID_WRITING_SUFFIX));
+        // Convert them to vocab ids
         Set<String> vocabIds =
                 items.convertItemIdsToVocabIds(itemIds, Constants.SKRITTER_ITEM_ID_WRITING_SUFFIX);
+        // Fetch banned words
         Map<String, Vocab> bannedVocabs = apiClient.getBannedVocabs();
+        // Remove banned words from the list
         apiClient.removeBannedVocabIds(bannedVocabs, vocabIds);
+        // Fetch all of the remaining vocabs
         List<Vocab> vocabs = apiClient.getVocabs(vocabIds);
 
+        // Download the simple to traditional map
         SimpleTradMap simpleTradMap = apiClient.getSimpleTraditionalMap();
         Exporter.ExportStyle exportStyle = EXPORT_STYLE;
+        // Export the data
         String exportData = new Exporter(simpleTradMap, vocabs).export(exportStyle);
         createImportFile(exportStyle, exportData);
     }

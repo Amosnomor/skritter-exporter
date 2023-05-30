@@ -99,6 +99,7 @@ public class SimpleTradMap {
         }
     }
 
+    // Helper to construct a SimpleTradMap from a json-io map
     record Builder(Map<String, Object> mapEntries) {
 
         SimpleTradMap build() {

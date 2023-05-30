@@ -93,6 +93,7 @@ public class Vocab {
         return String.join(":", writing, reading, definitions.get(Constants.SKRITTER_LANGUAGE_ENGLISH));
     }
 
+    // Helper class to construct a Vocab from a json-io map
     static class Builder {
 
         private String id;

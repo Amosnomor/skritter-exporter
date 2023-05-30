@@ -46,6 +46,7 @@ public class Item {
     private Item() {
     }
 
+    // Helper class to construct an Item from a json-io map
     static class Builder {
         private Builder() {
         }
@@ -66,10 +67,10 @@ public class Item {
             item.previousInterval = getLongValue(itemMap.get("previousInterval"));
             item.part = (String)itemMap.get("part");
             item.previousSuccess = getBooleanValue(itemMap.get("previousSuccess"));
+            //FIX THIS, DS: populate.  skipped because not needed for anki import
 //            item.sectionIds = (String[])itemMap.get("sectionIds");
+            //FIX THIS, DS: populate.  skipped because not needed for anki import
 //            String vocabListIds[];
-
-//            String[] vocabIds;
             Object[] vocabIdsArray = (Object[])itemMap.get(Constants.SKRITTER_VOCAB_IDS_FIELD);
             if (vocabIdsArray != null) {
                 int size = vocabIdsArray.length;

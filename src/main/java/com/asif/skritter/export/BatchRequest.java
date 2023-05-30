@@ -37,6 +37,7 @@ public class BatchRequest {
     private BatchRequest() {
     }
 
+    // Helper to construct a BatchRequest from a json-io map
     record Builder(Map<String, Object> batchRequestMap) {
 
         BatchRequest build() {

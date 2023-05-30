@@ -78,6 +78,11 @@ public class PinyinConverter {
         return String.valueOf(characters[position]);
     }
 
+    /**
+     * Convert incoming ascii to numeric pinyin to pinyin with tone marks
+     * @param asciiPinyin input containing pinyin with numeric tones.
+     * @return converted string
+     */
     public String toPinyin(String asciiPinyin) {
         Matcher matcher = pattern.matcher(asciiPinyin);
         StringBuilder s = new StringBuilder();
