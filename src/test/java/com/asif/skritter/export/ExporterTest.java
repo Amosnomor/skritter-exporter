@@ -154,6 +154,114 @@ class ExporterTest {
     }
 
     @Test
+    void convertDefinitionMultipleWhitespaceTest() {
+
+        String reading = "le5";
+        String pinyinWithToneMarks = "le";
+        String simplifiedWriting = "了";
+        String traditionalWriting = "了";
+        String definition = "a b  c   d";
+        String expectedDefinition = "a b c d";
+
+        Vocab.Builder builder = new Vocab.Builder();
+        builder.setReading(reading);
+        builder.setWriting(Vocab.WritingStyle.BOTH, simplifiedWriting);
+        builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
+
+        Vocab ni3Hao3 = builder.build();
+
+        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        String exported = exporter.export();
+        assertThat(exported).isEqualTo(Exporter.HEADER
+                + traditionalWriting + '\t'
+                + '\t'
+                + pinyinWithToneMarks + '\t'
+                + expectedDefinition
+                + '\n');
+    }
+
+    @Test
+    void leadingWhitespaceTest() {
+
+        String reading = "le5";
+        String pinyinWithToneMarks = "le";
+        String simplifiedWriting = "了";
+        String traditionalWriting = "了";
+        String definition = " something or other";
+        String expectedDefinition = "something or other";
+
+        Vocab.Builder builder = new Vocab.Builder();
+        builder.setReading(reading);
+        builder.setWriting(Vocab.WritingStyle.BOTH, simplifiedWriting);
+        builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
+
+        Vocab ni3Hao3 = builder.build();
+
+        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        String exported = exporter.export();
+        assertThat(exported).isEqualTo(Exporter.HEADER
+                + traditionalWriting + '\t'
+                + '\t'
+                + pinyinWithToneMarks + '\t'
+                + expectedDefinition
+                + '\n');
+    }
+
+    @Test
+    void trailingWhitespaceTest() {
+
+        String reading = "le5";
+        String pinyinWithToneMarks = "le";
+        String simplifiedWriting = "了";
+        String traditionalWriting = "了";
+        String definition = "something or other ";
+        String expectedDefinition = "something or other";
+
+        Vocab.Builder builder = new Vocab.Builder();
+        builder.setReading(reading);
+        builder.setWriting(Vocab.WritingStyle.BOTH, simplifiedWriting);
+        builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
+
+        Vocab ni3Hao3 = builder.build();
+
+        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        String exported = exporter.export();
+        assertThat(exported).isEqualTo(Exporter.HEADER
+                + traditionalWriting + '\t'
+                + '\t'
+                + pinyinWithToneMarks + '\t'
+                + expectedDefinition
+                + '\n');
+    }
+
+    @Test
+    void leadingAndTrailingWhitespaceTest() {
+
+        String reading = "le5";
+        String pinyinWithToneMarks = "le";
+        String simplifiedWriting = "了";
+        String traditionalWriting = "了";
+        String definition = " something or other ";
+        String expectedDefinition = "something or other";
+
+        Vocab.Builder builder = new Vocab.Builder();
+        builder.setReading(reading);
+        builder.setWriting(Vocab.WritingStyle.BOTH, simplifiedWriting);
+        builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
+
+        Vocab ni3Hao3 = builder.build();
+
+        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        String exported = exporter.export();
+        assertThat(exported).isEqualTo(Exporter.HEADER
+                + traditionalWriting + '\t'
+                + '\t'
+                + pinyinWithToneMarks + '\t'
+                + expectedDefinition
+                + '\n');
+    }
+
+    @Test
     void customDefinitionTest() {
 
         String reading = "ge4";

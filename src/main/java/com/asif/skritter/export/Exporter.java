@@ -87,6 +87,12 @@ public class Exporter {
 
             // Replace newlines in definitions with "; "
             definition = definition.replaceAll("\\n", DEFINITION_NEWLINE_REPLACEMENT);
+            // Replace multiple spaces with single space
+            definition = definition.replaceAll(" +", " ");
+            // Remove leading white space
+            definition = definition.replaceFirst("^ +", "");
+            // Remove trailing white space
+            definition = definition.replaceFirst(" +$", "");
 
             String traditional;
             String simplified;
