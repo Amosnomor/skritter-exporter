@@ -208,6 +208,32 @@ class ExporterTest {
     }
 
     @Test
+    void whiteSpaceInTraditionalTest() {
+
+        String reading = "le5";
+        String pinyinWithToneMarks = "le";
+        String traditionalWriting = " 了  ";
+        String definition = "something or other";
+        String expectedTraditionalWriting = "了";
+
+        Vocab.Builder builder = new Vocab.Builder();
+        builder.setReading(reading);
+        builder.setWriting(Vocab.WritingStyle.BOTH, traditionalWriting);
+        builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
+
+        Vocab ni3Hao3 = builder.build();
+
+        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        String exported = exporter.export();
+        assertThat(exported).isEqualTo(Exporter.HEADER
+                + expectedTraditionalWriting + '\t'
+                + '\t'
+                + pinyinWithToneMarks + '\t'
+                + definition
+                + '\n');
+    }
+
+    @Test
     void trailingWhitespaceTest() {
 
         String reading = "le5";
@@ -222,9 +248,9 @@ class ExporterTest {
         builder.setWriting(Vocab.WritingStyle.BOTH, simplifiedWriting);
         builder.addDefinition(Constants.SKRITTER_LANGUAGE_ENGLISH, definition);
 
-        Vocab ni3Hao3 = builder.build();
+        Vocab vocab = builder.build();
 
-        Exporter exporter = new Exporter(List.of(ni3Hao3));
+        Exporter exporter = new Exporter(List.of(vocab));
         String exported = exporter.export();
         assertThat(exported).isEqualTo(Exporter.HEADER
                 + traditionalWriting + '\t'

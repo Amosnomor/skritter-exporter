@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -142,7 +143,7 @@ public class ApiClient {
 
     List<Vocab> getVocabs(Set<String> vocabIds) throws IOException, URISyntaxException {
 
-        LOGGER.info("Getting Vocabs");
+        LOGGER.info("Getting Vocabs for {} ids", vocabIds.size());
 
         List<Vocab> vocabs = new ArrayList<>();
         List<String> vocabIdList = new ArrayList<>(vocabIds);
@@ -184,23 +185,42 @@ public class ApiClient {
 
         // get responses
 
-        List<Vocab> vocabs = new ArrayList<>();
+        Set<String> requestIds = new HashSet<>();
+        HashMap<String, Vocab> vocabsMap = new HashMap<>();
 
         for (BatchRequest batchRequest : getBatchData(batchResponse.id)) {
+
             if (batchRequest.response != null) {
+                LOGGER.info("Processing response to batchRequest {}, params {}",
+                        batchRequest.id, batchRequest.paramsToString());
+
+                // Check if we have already seen this one
+                if (! requestIds.add(batchRequest.id)) {
+                    LOGGER.warn("Skipping processing of batch request {}," +
+                            "already seen", batchRequest.id);
+                    continue;
+                }
+                
                 Map<String, Object> vocabsResponseMap = batchRequest.response;
 
                 Object[] vocabsArray = (Object[])vocabsResponseMap.get(
                         Constants.SKRITTER_VOCABS_ARRAY_NAME);
+                LOGGER.debug("Got {} vocab responses", vocabsArray.length);
                 for (Object vocabObj : vocabsArray) {
                     @SuppressWarnings("unchecked")
                     Vocab vocab = Vocab.Builder.build((Map<String, Object>) vocabObj);
-                    vocabs.add(vocab);
+
+                    if (vocabsMap.containsKey(vocab.id)) {
+                        LOGGER.warn("Skipping duplicate vocab: {}", vocab);
+                    } else {
+                        LOGGER.debug("adding vocab {}", vocab);
+                        vocabsMap.put(vocab.id, vocab);
+                    }
                 }
             }
         }
 
-        return vocabs;
+        return vocabsMap.values().stream().toList();
     }
 
     Map<String, Vocab> getBannedVocabs() throws IOException, URISyntaxException {
@@ -245,7 +265,7 @@ public class ApiClient {
         StringBuilder spawnedRequestIds = new StringBuilder();
 
         for (BatchRequest request : batchResponse.requests) {
-            spawnedRequestIds.append((spawnedRequestIds.length() == 0) ? "" : ",");
+            spawnedRequestIds.append((spawnedRequestIds.isEmpty()) ? "" : ",");
             spawnedRequestIds.append(request.id);
         }
 

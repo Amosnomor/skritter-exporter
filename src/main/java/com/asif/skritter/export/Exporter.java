@@ -134,6 +134,10 @@ public class Exporter {
                 }
             }
 
+            // remove white space from characters
+            traditional = traditional.replaceAll(" ", "");
+            simplified = simplified.replaceAll(" ", "");
+
             if (exportStyle == ExportStyle.ANKI) {
                 output.append(traditional);
                 output.append('\t');

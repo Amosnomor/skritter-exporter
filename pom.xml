@@ -16,12 +16,12 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.12</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.12</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.cedarsoftware</groupId>
             <artifactId>json-io</artifactId>
-            <version>4.14.0</version>
+            <version>4.14.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.houbb</groupId>
@@ -67,6 +67,7 @@
             <version>2.0.0.0</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <properties>

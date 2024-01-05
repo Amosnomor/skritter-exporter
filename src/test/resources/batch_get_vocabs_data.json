@@ -33,6 +33,7 @@
         "response":{
           "Vocabs":[
             {
+              "id": "zh-场-0",
               "definitions":{
                 "en":"courtyard; place; field; (mw for games, performances, etc.)\nthreshing floor"
               },
@@ -41,6 +42,7 @@
               "style":"simp"
             },
             {
+              "id": "zh-艮-0",
               "definitions":{
                 "en":"blunt; straightforward; tough; chewy\none of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)"
               },

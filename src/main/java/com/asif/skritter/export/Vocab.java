@@ -175,7 +175,7 @@ public class Vocab {
         private Vocab buildFromAttributes() {
             assert writing != null;
             assert reading != null;
-            assert definitions.size() != 0;
+            assert !definitions.isEmpty();
 
             Vocab vocab = new Vocab();
             vocab.writing = writing;

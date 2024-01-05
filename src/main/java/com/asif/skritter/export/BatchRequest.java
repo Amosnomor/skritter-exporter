@@ -74,4 +74,8 @@ public class BatchRequest {
             return batchRequest;
         }
     }
+
+    String paramsToString() {
+        return params.values().toString();
+    }
 }

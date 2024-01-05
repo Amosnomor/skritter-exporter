@@ -102,30 +102,42 @@ class MainTest {
 
     @Test
     void mainTest() throws URISyntaxException, IOException {
-        String expectedVocabLines =  "場\t场\tchǎng, cháng	courtyard; place; field;"
+        String expectedVocabLinesA =  "場\t场\tchǎng, cháng	courtyard; place; field;"
                 + " (mw for games, performances, etc.); threshing floor\n"
                 + "艮\t\tgěn, gèn\tblunt; straightforward; tough; chewy;"
                 + " one of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)\n";
+        String expectedVocabLinesB = "艮\t\tgěn, gèn\tblunt; straightforward; tough; chewy;"
+                + " one of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)\n"
+                + "場\t场\tchǎng, cháng	courtyard; place; field;"
+                + " (mw for games, performances, etc.); threshing floor\n";
 
         setupMainMock();
         Main.main(new String[0]);
         String exportedData = readGeneratedFile();
-        assertThat(exportedData).isEqualTo(Exporter.HEADER + expectedVocabLines);
+        assertThat(exportedData).satisfiesAnyOf(
+                s -> assertThat(s).isEqualTo(Exporter.HEADER + expectedVocabLinesA),
+                s -> assertThat(s).isEqualTo(Exporter.HEADER + expectedVocabLinesB));
     }
 
     @Test
     void skritterExportStyleTest() throws URISyntaxException, IOException {
         try {
-            String expectedVocabLines =
+            String expectedVocabLinesA =
                     "场\t場\tchang3, chang2	courtyard; place; field;"
-                    + " (mw for games, performances, etc.); threshing floor\n"
-                    + "艮\t艮\tgen3, gen4	blunt; straightforward; tough; chewy;"
-                    + " one of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)\n";
+                            + " (mw for games, performances, etc.); threshing floor\n"
+                            + "艮\t艮\tgen3, gen4	blunt; straightforward; tough; chewy;"
+                            + " one of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)\n";
+            String expectedVocabLinesB = "艮\t艮\tgen3, gen4	blunt; straightforward; tough; chewy;"
+                    + " one of the Eight Trigrams, symbolizing mountain (Kangxi Radical 138)\n"
+                    + "场\t場\tchang3, chang2	courtyard; place; field;"
+                    + " (mw for games, performances, etc.); threshing floor\n";
             Main.setSkritterExportStyle(Exporter.ExportStyle.SKRITTER);
             setupMainMock();
             Main.main(new String[0]);
             String exportedData = readGeneratedFile();
-            assertThat(exportedData).isEqualTo(expectedVocabLines);
+            assertThat(exportedData).satisfiesAnyOf(
+                    s -> assertThat(s).isEqualTo(expectedVocabLinesA),
+                    s -> assertThat(s).isEqualTo(expectedVocabLinesB));
         } finally {
             Main.restoreExportStyle();
         }

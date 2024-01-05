@@ -89,7 +89,7 @@ public class SimpleTradMap {
 
         @Override
         public String getFirstMapping(String simplifiedChar) {
-            assert traditionalMappings.size() > 0;
+            assert !traditionalMappings.isEmpty();
             return traditionalMappings.get(0);
         }
 
